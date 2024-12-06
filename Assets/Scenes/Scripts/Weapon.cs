@@ -40,4 +40,6 @@ public abstract class Weapon : MonoBehaviour
         shooter = owner;
     }
 
+
+
 }

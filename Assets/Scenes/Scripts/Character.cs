@@ -29,6 +29,7 @@ public class Character : MonoBehaviour
     {
         Health -= damage;
         healthBar.SetMinHealth(_health);
+        Debug.Log($"Player took {damage} Damage, Remaining Health{Health}");
         if (IsDead())
         {
             Destroy(gameObject);
@@ -40,8 +41,8 @@ public class Character : MonoBehaviour
         Health = newHealth;
     }
 
-    public void OnHitWith(int damage)
+    public void OnHitWith()
     {
-        TakeDamage(damage);
+
     }
 }
