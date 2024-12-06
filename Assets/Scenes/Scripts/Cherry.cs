@@ -26,6 +26,7 @@ public class Cherry : Weapon
             character.TakeDamage(this.Damage);
 
     }
+     
     private void FixedUpdate()
     {
         Move();

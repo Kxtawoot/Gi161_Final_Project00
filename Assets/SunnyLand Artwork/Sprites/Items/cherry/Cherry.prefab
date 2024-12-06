@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8755120657971616855}
   - component: {fileID: 7764616107958096709}
   - component: {fileID: -544310625870143626}
+  - component: {fileID: -407480863584387350}
   m_Layer: 0
   m_Name: Cherry
   m_TagString: Untagged
@@ -98,4 +99,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 10
-  speed: 500
+  cherrySpeed: 0
+--- !u!58 &-407480863584387350
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191641080777751472}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.42

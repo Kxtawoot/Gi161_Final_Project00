@@ -10,31 +10,30 @@ public class Bear : Enemy
     private void Start()
     {
         Init(10);
+        Debug.Log("Bear" + Health);
         Behaviour();
     }
-
     private void FixedUpdate()
     {
         Behaviour();
     }
-
+    
     public override void Behaviour()
     {
         Rb.MovePosition(Rb.position + velocity * Time.fixedDeltaTime);
 
-        if (Mathf.Abs(Rb.position.x - movePoints[0].position.x) < 0.1f && velocity.x < 0)
+        if (Rb.position.x <= movePoints[0].position.x && velocity.x < 0)
+            FilpCharacter();
+
+        else if (Rb.position.x >= movePoints[1].position.x && velocity.x > 0)
         {
-            FlipCharacter();
-        }
-        else if (Mathf.Abs(Rb.position.x - movePoints[1].position.x) < 0.1f && velocity.x > 0)
-        {
-            FlipCharacter();
+            FilpCharacter();
         }
     }
 
-    private void FlipCharacter()
+    private void FilpCharacter()
     {
-        velocity *= 1;
+        velocity *= -1;
 
         Vector2 scale = transform.localScale;
         scale.x *= -1;
