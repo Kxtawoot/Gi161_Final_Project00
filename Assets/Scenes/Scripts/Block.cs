@@ -15,7 +15,7 @@ public class Block : Weapon
     public void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        Damage = 20;
+        Damage = 10;
         force = new Vector2(GetShootDirection() * 5, 10);
         Move();
     }

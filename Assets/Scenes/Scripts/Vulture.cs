@@ -6,30 +6,25 @@ public class Vulture : Enemy, IShootable
 {
     [SerializeField] private float attackRange;
     public Player player;
-
+    
     [field: SerializeField] public Transform SpawnPoint { get; set; }
     [field: SerializeField] public GameObject Bullet { get; set; }
+    public bool FacingRight { get; }
+
     [field: SerializeField] public float ReloadTime { get; set; }
     [field: SerializeField] public float WaitTime { get; set; }
 
-    public bool FacingRight { get; set; } // เช็คทิศทางของการยิง
-    private Animator anim;
-
-    private void Start()
-    {
-        anim = GetComponent<Animator>(); // กำหนด Animator ที่ใช้ในคลาส
-    }
-
     private void Update()
     {
-        WaitTime -= Time.deltaTime; // ลดเวลารอ
-        Behaviour(); // เรียกพฤติกรรมของศัตรู
+        WaitTime -= Time.deltaTime;
 
-        // ถ้าหมดเวลาให้รีเซ็ต
+        Behaviour();
+
         if (WaitTime < 0f)
         {
             WaitTime = ReloadTime;
         }
+
     }
 
     public override void Behaviour()
@@ -37,7 +32,6 @@ public class Vulture : Enemy, IShootable
         Vector2 direction = player.transform.position - transform.position;
         float distance = direction.magnitude;
 
-        // ถ้าผู้เล่นอยู่ในระยะโจมตีให้ยิง
         if (distance < attackRange)
         {
             Shoot();
@@ -48,29 +42,10 @@ public class Vulture : Enemy, IShootable
     {
         if (WaitTime <= 0)
         {
-            anim.SetTrigger("Shoot"); // เรียกใช้ trigger "Shoot" ใน Animator
-
-            // คำนวณทิศทางการยิง (ถ้าหันไปทางขวาหรือซ้าย)
-            Vector3 shootDirection = FacingRight ? Vector3.right : Vector3.left;
-
-            // สร้าง Bullet ที่ SpawnPoint
             GameObject obj = Instantiate(Bullet, SpawnPoint.position, Quaternion.identity);
-
-            // ตั้งทิศทางการยิง
-            obj.GetComponent<Rigidbody2D>().velocity = shootDirection * 10f;
-
-            // หากมี Block Component ก็ทำการกำหนดค่า
             Block block = obj.GetComponent<Block>();
-            if (block != null)
-            {
-                block.Init(20, this); // กำหนดค่าเริ่มต้น
-            }
-            else
-            {
-                Debug.LogError("Bullet does not have Block component!");
-            }
+            block.Init(20, this);
 
-            WaitTime = ReloadTime; // รีเซ็ตเวลา
         }
     }
 }

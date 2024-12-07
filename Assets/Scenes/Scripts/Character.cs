@@ -28,7 +28,7 @@ public class Character : MonoBehaviour
     public void TakeDamage(int damage)
     {
         Health -= damage;
-        healthBar.SetMinHealth(_health);
+       // healthBar.SetMinHealth(_health);
         Debug.Log($"Player took {damage} Damage, Remaining Health{Health}");
         if (IsDead())
         {
