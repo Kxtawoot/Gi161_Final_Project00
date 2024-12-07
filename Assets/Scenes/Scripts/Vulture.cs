@@ -37,10 +37,6 @@ public class Vulture : Enemy, IShootable
             Shoot();
         }
     }
-    public void Start()
-    {
-        Init(10);
-    }
     public void Shoot()
     {
         if (WaitTime <= 0)
@@ -48,7 +44,6 @@ public class Vulture : Enemy, IShootable
             GameObject obj = Instantiate(Bullet, SpawnPoint.position, Quaternion.identity);
             Block block = obj.GetComponent<Block>();
             block.Init(20, this);
-
         }
     }
 }

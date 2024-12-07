@@ -19,22 +19,20 @@ public class Character : MonoBehaviour
     
     public Animator Anim;
     public Rigidbody2D Rb;
-    public HealthBar healthBar;
-    public bool IsDead()
-    {
-        return Health <= 0;
-    }
-
+   
     public void TakeDamage(int damage)
     {
         
         Health -= damage;
-       // healthBar.SetMinHealth(_health);
-        Debug.Log($"Player took {damage} Damage, Remaining Health{Health}");
         if (IsDead())
         {
             Destroy(gameObject);
         }
+    }
+
+    public bool IsDead()
+    {
+        return Health <= 0;
     }
 
     public void Init(int newHealth)
@@ -42,8 +40,4 @@ public class Character : MonoBehaviour
         Health = newHealth;
     }
 
-    public void OnHitWith()
-    {
-
-    }
 }

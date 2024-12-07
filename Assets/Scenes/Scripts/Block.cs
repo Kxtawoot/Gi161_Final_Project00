@@ -5,34 +5,28 @@ using UnityEngine;
 public class Block : Weapon
 {
     public Rigidbody2D rb2d;
-    [SerializeField] private float destroyTime = 5f; // เวลาทำลาย
-    public int Damage { get; private set; } = 10; // กำหนดค่า Damage
+    private Vector2 force;
 
     public override void Move()
     {
-        // ไม่ต้องเคลื่อนที่, ปล่อยให้แรงโน้มถ่วงจัดการ
-        Debug.Log("Block ถูกปล่อยลงมา");
+        rb2d.AddForce(force, ForceMode2D.Impulse);
     }
 
     public void Start()
     {
+        force = new Vector2(GetShootDirection() * 2, 10);
         rb2d = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, destroyTime); // ทำลายตัวเองหลังเวลาที่กำหนด
         Move();
+        Damage = 20;
     }
 
-    // ตรวจจับการชนกับ Player
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // ตรวจสอบว่าเจอกับ Player หรือไม่
         Player player = collision.gameObject.GetComponent<Player>();
         if (player != null)
         {
-            // ให้ Player รับความเสียหายจาก Block
             player.TakeDamage(Damage);
-
-            // ทำลาย Block หลังชน
-            Destroy(gameObject);
+            Destroy(player);
         }
     }
 

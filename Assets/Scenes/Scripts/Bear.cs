@@ -9,8 +9,7 @@ public class Bear : Enemy
 
     private void Start()
     {
-        Init(10);
-        Debug.Log("Bear" + Health);
+        Init(100);
         Behaviour();
     }
     private void FixedUpdate()
