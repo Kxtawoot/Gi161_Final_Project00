@@ -5,6 +5,18 @@ using UnityEngine;
 public class Player : Character, IShootable
 {
 
+    [SerializeField] private int health = 50;
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log($"Player took {damage} damage. Remaining Health: {health}");
+
+        if (IsDead())
+        {
+            Debug.Log("Player is Dead!");
+            Destroy(gameObject);  // ทำลาย Player เมื่อหมด HP
+        }
+    }
     Vector2 move;
     float moveX;
     bool facingRight = true;

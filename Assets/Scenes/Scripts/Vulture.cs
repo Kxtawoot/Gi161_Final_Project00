@@ -37,7 +37,10 @@ public class Vulture : Enemy, IShootable
             Shoot();
         }
     }
-
+    public void Start()
+    {
+        Init(10);
+    }
     public void Shoot()
     {
         if (WaitTime <= 0)

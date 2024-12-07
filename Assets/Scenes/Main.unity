@@ -19110,8 +19110,8 @@ MonoBehaviour:
   player: {fileID: 1888702567}
   <SpawnPoint>k__BackingField: {fileID: 1581046318}
   <Bullet>k__BackingField: {fileID: 4308718082596508152, guid: 82c53658febee064e8ced66edb9fbe35, type: 3}
-  <ReloadTime>k__BackingField: 0
-  <WaitTime>k__BackingField: 0
+  <ReloadTime>k__BackingField: 2
+  <WaitTime>k__BackingField: 2
 --- !u!1 &906437949
 GameObject:
   m_ObjectHideFlags: 0
@@ -39601,6 +39601,7 @@ MonoBehaviour:
   Anim: {fileID: 1888702566}
   Rb: {fileID: 1888702568}
   healthBar: {fileID: 0}
+  health: 50
   speed: 10
   jumpSpeed: 7
   <Bullet>k__BackingField: {fileID: 3191641080777751472, guid: d455fac7b3c29f94aaa703b01d508935, type: 3}
